@@ -140,7 +140,7 @@ const CoordinatesBlock: React.FC<IProps> = (props)  => {
                   props.address.addressDestination 
                 } 
                 placeholder='address'
-                className='names-input'
+                className={'names-input ' + props.nameOfBlock.trim().split(' ')[0]}
                 onChange={(e) => onChangeHandler(e.target.value)}
             >
             </input>
