@@ -4,7 +4,7 @@ interface IProps {
     
 }
 
-const  Error: React.FC<IProps> = () =>{
+const  Marker: React.FC<IProps> = () =>{
   return (
     <div className="main">
 
@@ -12,4 +12,4 @@ const  Error: React.FC<IProps> = () =>{
   );
 }
 
-export default Error;
+export default Marker;

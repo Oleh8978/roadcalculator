@@ -1,53 +1,37 @@
 interface IHostEnv {
-    MAIN_SERVICE_HOST: string;
-    AUTH_SERVICE_HOST: string;
-    HISTORY_SERVICE_HOST: string;
-    WS_API_HOST: string;
+    GOOGLE_API_SERVICE_HOST: string;
+    GOOGLE_API_SERVICE_PATH: string;
+    GOOGLE_API_SERVICE_PATH_LNG_LAT: string;
+    OSRM_API_PATH: string;
     GOOGLE_GEO_API_KEY: string;
   }
   
   export class Config {
     public static init(env: IHostEnv) {
-      this.WS_API_HOST = env.WS_API_HOST;
-      this.MAIN_SERVICE_HOST = env.MAIN_SERVICE_HOST;
-      this.AUTH_SERVICE_HOST = env.AUTH_SERVICE_HOST;
+      this.GOOGLE_API_SERVICE_HOST = env.GOOGLE_API_SERVICE_HOST;
+      this.GOOGLE_API_SERVICE_PATH = env.GOOGLE_API_SERVICE_PATH;
+      this.GOOGLE_API_SERVICE_PATH_LNG_LAT = env.GOOGLE_API_SERVICE_PATH_LNG_LAT;
+      this.OSRM_API_PATH = env.OSRM_API_PATH;
       this.GOOGLE_GEO_API_KEY = env.GOOGLE_GEO_API_KEY;
-      this.HISTORY_SERVICE_HOST = env.HISTORY_SERVICE_HOST;
     }
   
-    // General
-    public static MAIN_SERVICE_HOST: string;
-    public static AUTH_SERVICE_HOST: string;
-    public static HISTORY_SERVICE_HOST: string;
-    public static WS_API_HOST: string;
+    public static GOOGLE_API_SERVICE_HOST: string;
+    public static GOOGLE_API_SERVICE_PATH: string;
+    public static GOOGLE_API_SERVICE_PATH_LNG_LAT: string;
+    public static OSRM_API_PATH: string;
     public static GOOGLE_GEO_API_KEY: string;
-  
-    public static API_PREFIX = "api/v1";
-  
+    
     public static get GOOGLE_API_KEY() {
       return this.GOOGLE_GEO_API_KEY;
     }
+
+    public static get OSRM_API_ENDPOINT() {
+      return this.OSRM_API_PATH
+    }
   
-    public static get MAIN_SERVICE_ENDPOINT() {
-      return `${this.MAIN_SERVICE_HOST}/`;
+    public static get GOOGLE_SELECT_SEARCH_ENDPOINT() {
+      return `${this.GOOGLE_API_SERVICE_HOST}${this.GOOGLE_API_SERVICE_PATH}`;
     };
-  
-    public static get AUTH_SERVICE_ENDPOINT() {
-      return `${this.AUTH_SERVICE_HOST}/auth/`;
-    };
-  
-    public static get HISTORY_SERVICE_ENDPOINT() {
-      return `${this.HISTORY_SERVICE_HOST}/`;
-    };
-    public static get WS_ENDPOINT() { return `${Config.WS_API_HOST}`; };
+
   }
   
-  export enum SocketEventEnum {
-    // UpdateEvent = 'UpdateEvent',
-  }
-  
-  export enum DevicePlatformEnum {
-    IOS = 'ios',
-    Android = 'android',
-    Web = 'web',
-  }
